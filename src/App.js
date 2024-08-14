@@ -42,19 +42,28 @@ function App() {
   const [navbarStyle, setNavbarStyle] = useState({ top: '0' });
 
   const handleScroll = () => {
-
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
     if (scrollTop > lastScrollTop) {
       // Downscroll - hide the navbar
       setNavbarStyle({ top: '-70px' }); // Adjust based on your navbar height
-    } else {
+    } else if (scrollTop < lastScrollTop) {
       // Upscroll - show the navbar
       setNavbarStyle({ top: '0' });
     }
 
     setLastScrollTop(scrollTop);
   };
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollTop]); // Dependency array with lastScrollTop
+
+  
 function hambclick() {
   const sidebar= document.querySelector('.sidebar');
   sidebar.classList.toggle('active')
