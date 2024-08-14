@@ -1,38 +1,264 @@
+*{
+  padding: 0;
+  margin: 0;
+}
 .App {
+  font-family: sans-serif; 
   text-align: center;
+  overflow-x: hidden;
+}
+.hidden{
+
+  visibility: hidden;
+}
+.header {
+  transition: 0.2s ease-in-out;
+  width: 95vw;
+  position: fixed;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  margin: 10px 15px 0px 15px;
+  background-color: white;
+  height: 60px;
+  box-shadow: 10px 5px 15px 1px #6f42c1bf;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  padding: auto;
+  position: relative;
+  margin: 0 auto; 
+  padding: 0 20px; 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo {
+  margin-left: 15px;
+  padding-top: 17px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #6c757d; 
+  float: left; 
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding-top: 21px;
+  float: left; 
+  margin-left: 40px; 
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+ nav a {
+  text-decoration: none;
+  color: #2c363e;
+  font-weight: 500;
+}
+
+.auth-buttons {
+  padding: 10px 15px 0 0;
+  float: right; 
+}
+
+.login-button, .signup-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-button {
+  background-color: transparent;
+  color: #6c757d; 
+  border: 1px solid #6c757d; 
+  margin-right: 10px;
+}
+
+.signup-button {
+  background-color: #6f42c1; 
+  color: #fff;
+}
+
+.main { 
+  height: 100vh;
+  position: relative; 
+  overflow: hidden; 
+}
+.outline{
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.dashed{
+  border-radius: 50%;
+  width: 181px;
+  height: 178px; 
+  
+  position: absolute;
+  border: 2px dashed #7900ff30;
+}
+.circles {
+  /* perspective: 1000px; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; 
+}
+.content{
+  padding: 190px 23vw;
+  position: relative;
+}
+.circle {
+  position: absolute;
+  transition: transform 0.5s;
+  border-radius: 50%;
+  border: 1px dotted #ced4da; 
+  opacity: 1; 
+}
+.circle:hover {
+  transform: scale(1.1); /* Add a slight zoom effect on hover */
+}
+
+/* Add styles for individual circles (adjust positions and sizes) */
+
+/* ...and so on */
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #6c757d; 
+  margin-bottom: 40px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center; 
+}
+
+.learn-button, .join-button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 10px; 
+}
+
+.learn-button {
+  background-color: #fff; 
+  color: #6f42c1; 
+  border: 2px solid #6f42c1;
+}
+
+.join-button {
+  background-color: #6f42c1; 
+  color: #fff;
+}
+
+.main2{
+  height: 70vh;
+  padding: 80px 170px;
+  background-color: rgba(29, 28, 28, 0.953);
+  color: rgba(255, 255, 255, 0.808);
+}
+.hambdiv{
+  padding: 17px;
+  display: none;
+}
+.hamburger {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-around;
+  width: 24px;
+  height: 24px;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+}
+
+.bar {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Optional: Add hover effect */
+.hamburger:hover .bar {
+  background-color: gray;
+}
+
+@media (max-width: 700px) {
+  .hambdiv{
+    display: block;
+  }
+  .header .auth-buttons{
+    display: none;
+  }
+  .header{
+    width: 90vw;
+    nav{
+      display: none;
+    }
+  }
+  .content{
+    padding: 140px 2vw;
+  }
+  .buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .main2{
+    padding: 2vh;
+  }
+  nav a{
+    color: white;
+    font-weight: 400;
+  }
+
+}
+
+/* Sidebar */
+
+.sidebar {
+  z-index: 11;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar li {
+  list-style: none;
+  padding: 20px;
+  text-align: center;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
